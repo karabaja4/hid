@@ -1,4 +1,5 @@
 #!/bin/bash
+set -eu
 
 cd /sys/kernel/config/usb_gadget/ || exit 1
 
