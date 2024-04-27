@@ -1,31 +1,46 @@
-# debian vm vbox stuff
+### debian vm vbox stuff
+```
 apt install linux-headers-amd64
 apt install gcc make perl
-(guest additions)
+(install guest additions)
+```
 
-# setup sudo
+### setup sudo and shared folders
+```
 /sbin/usermod -a -G vboxsf igor
 /sbin/usermod -a -G sudo igor
+```
 
-# install build stuff
+### install build stuff
+```
 sudo apt install git bc bison flex libssl-dev make libc6-dev libncurses5-dev
 sudo apt install crossbuild-essential-armhf
+```
 
-# clone
+### clone
+```
 git clone --depth=1 https://github.com/raspberrypi/linux
+```
 
-# patch
+### patch the kernel
+```
 patch -p1 < wakeup.patch
+```
 
-# configs
+### configure
+```
 cd linux
 KERNEL=kernel
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bcmrpi_defconfig
+```
 
-# build
+### build
+```
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- zImage modules dtbs
+```
 
-# copy new kernel to sd
+### copy new kernel to sd
+```
 mkdir mnt
 mkdir mnt/fat32
 mkdir mnt/ext4
@@ -42,20 +57,29 @@ sudo cp arch/arm/boot/dts/overlays/*.dtb* mnt/fat32/overlays/
 sudo cp arch/arm/boot/dts/overlays/README mnt/fat32/overlays/
 sudo umount mnt/fat32
 sudo umount mnt/ext4
+```
 
-# configure modules
+### configure modules
+```
 echo "dtoverlay=dwc2" | sudo tee -a /boot/config.txt
 echo "dwc2" | sudo tee -a /etc/modules
 sudo echo "libcomposite" | sudo tee -a /etc/modules
+```
 
-# nodejs
+### install nodejs
+```
 wget https://unofficial-builds.nodejs.org/download/release/v20.12.2/node-v20.12.2-linux-armv6l.tar.gz
 tar zxvf node-v20.12.2-linux-armv6l.tar.gz
 cd node-v20.12.2-linux-armv6l
 sudo cp -R * /usr/local/
+```
 
-# camera server
+### camera server
+```
 libcamera-vid -t 0 --width 1280 --height 720 --framerate 30 --listen -o tcp://0.0.0.0:8494
+```
 
-# camera client
+### camera client
+```
 ffplay tcp://192.168.0.30:8494 -fflags nobuffer -flags low_delay -framedrop
+```
