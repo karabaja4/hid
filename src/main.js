@@ -1,14 +1,7 @@
 const fs = require('node:fs');
 const readline = require('node:readline');
-const timers = require('node:timers/promises');
 const keys = require('./keys');
 const log = require('./log');
-const config = require('./config').get();
-
-const arg = process.argv.slice(2)[0];
-if (!['auto', 'manual'].includes(arg)) {
-  log.fatal('need auto or manual');
-};
 
 log.success('Hi.');
 
@@ -46,65 +39,10 @@ const writeSequence = async (keyInfo) => {
 };
 
 // manual typing from stdin
-if (arg === 'manual') {
-  readline.emitKeypressEvents(process.stdin);
-  if (process.stdin.setRawMode != null) {
-    process.stdin.setRawMode(true);
-  }
-  process.stdin.on('keypress', async (str, keyInfo) => {
-    await writeSequence(keyInfo);
-  });
+readline.emitKeypressEvents(process.stdin);
+if (process.stdin.setRawMode != null) {
+  process.stdin.setRawMode(true);
 }
-
-// auto typing predefined values
-if (arg === 'auto') {
-  
-  // values
-  const username = config.username;
-  const password = config.password;
-  
-  const main = async () => {
-    const writeAuto = async (keyName) => {
-      if (keyName) {
-        await writeSequence({
-          name: keyName.toLowerCase(),
-          ctrl: false,
-          meta: false,
-          shift: (keyName.length === 1) && (/^[A-Z]+$/.test(keyName))
-        });
-      }
-    };
-    const sleep = async (interval) => {
-      await timers.setTimeout(interval);
-    };
-    
-    // wakeup
-    await writeAuto("escape");
-    await sleep(5000);
-    
-    // username
-    for (let i = 0; i < username.length; i++) {
-      await writeAuto(username[i]);
-      await sleep(300);
-    }
-    
-    // tab
-    await sleep(2000);
-    await writeAuto("tab");
-    await sleep(2000);
-    
-    // password
-    for (let i = 0; i < password.length; i++) {
-      await writeAuto(password[i]);
-      await sleep(300);
-    }
-    
-    // enter
-    await sleep(2000);
-    await writeAuto("return");
-    
-    log.success('Bye.');
-  };
-  
-  main();
-}
+process.stdin.on('keypress', async (str, keyInfo) => {
+  await writeSequence(keyInfo);
+});
