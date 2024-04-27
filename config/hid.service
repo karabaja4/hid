@@ -1,0 +1,10 @@
+[Unit]
+Description=setup
+ConditionPathIsDirectory=!/sys/kernel/config/usb_gadget/logi
+
+[Service]
+Type=oneshot
+ExecStart=/home/igor/hid/config/hid.sh
+
+[Install]
+WantedBy=multi-user.target
