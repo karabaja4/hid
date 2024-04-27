@@ -26,7 +26,7 @@ const writeSequence = async (keyInfo) => {
     const keyName = keyInfo.name || keyInfo.sequence;
     const ctrl = keyInfo.ctrl;
     const shift =  keyInfo.shift;
-    const alt = keyInfo.meta && keyName !== 'escape'; // for some reason escape comes with alt pressed
+    const alt = keyInfo.meta && (keyName !== 'escape'); // for some reason escape comes with alt pressed
     // exit on ctrl-c
     if ((keyName?.toLowerCase() === 'c') && (ctrl === true)) {
       log.success('Bye.');
