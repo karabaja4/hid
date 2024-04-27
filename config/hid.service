@@ -1,6 +1,7 @@
 [Unit]
-Description=setup
+Description=setuphid
 ConditionPathIsDirectory=!/sys/kernel/config/usb_gadget/logi
+After=dev-hidg0.device
 
 [Service]
 Type=oneshot
