@@ -1,6 +1,23 @@
 #!/bin/bash
 
 cd /sys/kernel/config/usb_gadget/ || exit 1
+
+# https://www.kernel.org/doc/Documentation/usb/gadget_configfs.txt
+if [ -d "logi" ]
+then
+    cd logi || exit 1
+    echo "" > UDC
+    sleep 2
+    rm configs/c.1/hid.usb0
+    rmdir configs/c.1/strings/0x409
+    rmdir configs/c.1
+    rmdir functions/hid.usb0
+    rmdir strings/0x409
+    cd ..
+    rmdir logi
+    sleep 2
+fi
+
 mkdir -p logi
 cd logi || exit 1
 
