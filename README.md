@@ -84,7 +84,7 @@ libcamera-vid -t 0 --width 1280 --height 720 --framerate 30 --listen -o tcp://0.
 ffplay tcp://192.168.0.30:8494 -fflags nobuffer -flags low_delay -framedrop
 ```
 
-# setup hid service
+### setup hid service
 ```
 cp hid.service /etc/systemd/system/
 systemctl enable hid
