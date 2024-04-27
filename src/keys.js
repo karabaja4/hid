@@ -110,7 +110,6 @@ const map = {
   
   // cro keyboard
   'ž': LSHIFT + NULLCHAR + String.fromCharCode(0x20), // #
-  'đ': LSHIFT + NULLCHAR + String.fromCharCode(0x37), // \
   
   'release': NULLCHAR.repeat(8)
 };
