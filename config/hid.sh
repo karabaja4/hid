@@ -1,8 +1,8 @@
 #!/bin/bash
 
-cd /sys/kernel/config/usb_gadget/
+cd /sys/kernel/config/usb_gadget/ || exit 1
 mkdir -p logi
-cd logi
+cd logi || exit 1
 
 echo 0x1d6b > idVendor
 echo 0x0104 > idProduct
