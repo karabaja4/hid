@@ -31,9 +31,6 @@ const map = {
   'y': String.fromCharCode(0x1c),
   'z': String.fromCharCode(0x1d),
   
-  // # if cro keyboard
-  'ž': LSHIFT + NULLCHAR + String.fromCharCode(0x20),
-  
   // numbers
   '1': String.fromCharCode(0x1e),
   '2': String.fromCharCode(0x1f),
@@ -110,6 +107,10 @@ const map = {
   'backspace': String.fromCharCode(0x2a),
   'tab': String.fromCharCode(0x2b),
   'space': String.fromCharCode(0x2c),
+  
+  // cro keyboard
+  'ž': LSHIFT + NULLCHAR + String.fromCharCode(0x20), // #
+  'đ': LSHIFT + NULLCHAR + String.fromCharCode(0x37), // \
   
   'release': NULLCHAR.repeat(8)
 };
