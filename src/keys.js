@@ -31,6 +31,9 @@ const map = {
   'y': String.fromCharCode(0x1c),
   'z': String.fromCharCode(0x1d),
   
+  // # if cro keyboard
+  'ž': LSHIFT + NULLCHAR + String.fromCharCode(0x20),
+  
   // numbers
   '1': String.fromCharCode(0x1e),
   '2': String.fromCharCode(0x1f),
