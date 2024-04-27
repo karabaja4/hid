@@ -43,6 +43,20 @@ const map = {
   '9': String.fromCharCode(0x26),
   '0': String.fromCharCode(0x27),
   
+  // function keys
+  'F1': String.fromCharCode(0x3a),
+  'F2': String.fromCharCode(0x3b),
+  'F3': String.fromCharCode(0x3c),
+  'F4': String.fromCharCode(0x3d),
+  'F5': String.fromCharCode(0x3e),
+  'F6': String.fromCharCode(0x3f),
+  'F7': String.fromCharCode(0x40),
+  'F8': String.fromCharCode(0x41),
+  'F9': String.fromCharCode(0x42),
+  'F10': String.fromCharCode(0x43),
+  'F11': String.fromCharCode(0x44),
+  'F12': String.fromCharCode(0x45),
+  
   // numbers with shift
   '!': LSHIFT + NULLCHAR + String.fromCharCode(0x1e),
   '"': LSHIFT + NULLCHAR + String.fromCharCode(0x1f),
