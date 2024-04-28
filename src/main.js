@@ -21,7 +21,7 @@ const init = async () => {
     if (e.code === 'ESHUTDOWN') {
       // ESHUTDOWN: cannot send after transport endpoint shutdown, write
       log.info('ESHUTDOWN detected, reconnecting...');
-      const scriptPath = path.join(__dirname, '../camera/hid.sh');
+      const scriptPath = path.join(__dirname, '../config/hid.sh');
       const output = await exec(`sudo /usr/bin/bash ${scriptPath}`);
       log.info(output?.stdout?.trim());
     }
