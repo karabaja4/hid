@@ -20,11 +20,13 @@ sudo apt install crossbuild-essential-armhf
 ### clone
 ```
 git clone --depth=1 https://github.com/raspberrypi/linux
+git clone https://github.com/karabaja4/hid.git
 ```
 
 ### patch the kernel
 ```
-patch -p1 < wakeup.patch
+cd linux
+patch -p1 < ../hid/config/wakeup.patch
 ```
 
 ### configure
