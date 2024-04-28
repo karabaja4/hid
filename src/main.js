@@ -20,15 +20,10 @@ const init = async () => {
       throw new Error('Release sequence not found.');
     }
   } catch (err) {
-    if (err.code === 'ESHUTDOWN') {
-      // ESHUTDOWN: cannot send after transport endpoint shutdown, write
-      log.info('ESHUTDOWN detected, reconnecting...');
-      const scriptPath = path.join(__dirname, '../config/hid.sh');
-      const output = await exec(`sudo /usr/bin/bash ${scriptPath}`);
-      log.info(output?.stdout?.trim());
-    } else {
-      throw err;
-    }
+    log.info(`Error writing to ${hidPath}, reconnecting...`);
+    const scriptPath = path.join(__dirname, '../config/hid.sh');
+    const output = await exec(`sudo /usr/bin/bash ${scriptPath}`);
+    log.info(output?.stdout?.trim());
   }
   log.success('Initialization complete.');
 };
