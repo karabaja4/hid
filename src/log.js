@@ -1,18 +1,18 @@
 const info = (text) => {
   if (text) {
-    console.log('\x1b[94m%s\x1b[0m', text);
+    console.log('[\x1b[94mINFO\x1b[0m] %s', text);
   }
 };
 
 const success = (text) => {
   if (text) {
-    console.log('\x1b[32m%s\x1b[0m', text);
+    console.log('[\x1b[92mSUCCESS\x1b[0m] %s', text);
   }
 };
 
 const error = (text) => {
   if (text) {
-    console.log('\x1b[91m%s\x1b[0m', text);
+    console.log('[\x1b[91mERROR\x1b[0m] %s', text);
   }
 };
 
