@@ -6,6 +6,7 @@ cd /sys/kernel/config/usb_gadget/ || exit 1
 # https://www.kernel.org/doc/Documentation/usb/gadget_configfs.txt
 if [ -d "logi" ]
 then
+    echo "Gadget exists, removing..."
     cd logi || exit 1
     echo "" > UDC
     sleep 2
@@ -17,6 +18,7 @@ then
     cd ..
     rmdir logi
     sleep 2
+    echo "Gadget removed."
 fi
 
 mkdir -p logi
