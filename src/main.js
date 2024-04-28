@@ -20,7 +20,7 @@ const init = async () => {
       throw new Error('Release sequence not found.');
     }
   } catch (err) {
-    log.info(`Error writing to ${hidPath}, reconnecting...`);
+    log.info(`Error writing to ${hidPath} (${err?.code}), reconnecting...`);
     const scriptPath = path.join(__dirname, '../config/hid.sh');
     const output = await exec(`sudo /usr/bin/bash ${scriptPath}`);
     log.bash(output?.stdout?.trim());
