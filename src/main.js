@@ -12,9 +12,11 @@ log.success('Hi.');
 const hidPath = '/dev/hidg0';
 
 const init = async () => {
-  const releaseSequence = keys.getReleaseSequence();
   try {
-    await fs.promises.writeFile(hidPath, releaseSequence);
+    const releaseSequence = keys.getReleaseSequence();
+    if (releaseSequence) {
+      await fs.promises.writeFile(hidPath, releaseSequence);
+    }
   } catch (e) {
     if (e.code === 'ESHUTDOWN') {
       // ESHUTDOWN: cannot send after transport endpoint shutdown, write
