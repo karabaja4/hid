@@ -16,13 +16,13 @@ const init = async () => {
   try {
     await fs.promises.writeFile(hidPath, releaseSequence);
   } catch (e) {
-    console.log(JSON.stringify(e));
-    // ESHUTDOWN: cannot send after transport endpoint shutdown, write
-    const scriptPath = path.join(__dirname, '../camera/hid.sh');
-    log.info(scriptPath);
-    log.info('ESHUTDOWN detected, reconnecting...');
-    // const output = await exec(`sudo /usr/bin/bash ${scriptPath}`);
-    // log.info(output?.stdout?.trim());
+    if (e.code === 'ESHUTDOWN') {
+      // ESHUTDOWN: cannot send after transport endpoint shutdown, write
+      log.info('ESHUTDOWN detected, reconnecting...');
+      const scriptPath = path.join(__dirname, '../camera/hid.sh');
+      const output = await exec(`sudo /usr/bin/bash ${scriptPath}`);
+      log.info(output?.stdout?.trim());
+    }
   }
 };
 
