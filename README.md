@@ -31,7 +31,6 @@ patch -p1 < ../hid/config/wakeup.patch
 
 ### configure
 ```
-cd linux
 KERNEL=kernel
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bcmrpi_defconfig
 ```
