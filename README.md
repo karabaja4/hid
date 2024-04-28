@@ -1,3 +1,8 @@
+### raspian image
+(download: Raspberry Pi OS (Legacy) Lite)
+7z x 2024-03-12-raspios-bullseye-armhf-lite.img.xz
+dd if=2024-03-12-raspios-bullseye-armhf-lite.img of=/dev/sdd bs=4M conv=fsync
+
 ### debian vm vbox stuff
 ```
 apt install linux-headers-amd64
