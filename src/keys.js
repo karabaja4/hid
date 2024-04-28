@@ -109,7 +109,7 @@ const map = {
   'space': String.fromCharCode(0x2c),
   
   // cro keyboard
-  'ž': LSHIFT + NULLCHAR + String.fromCharCode(0x20), // #
+  'ž': LSHIFT + NULLCHAR + String.fromCharCode(0x20), // #, shift-3 (£)
   
   'release': NULLCHAR.repeat(8)
 };
