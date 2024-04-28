@@ -1,12 +1,31 @@
 const fs = require('node:fs');
 const readline = require('node:readline');
+const path = require('node:path');
+const util = require('node:util');
+const exec = util.promisify(require('node:child_process').exec);
+
 const keys = require('./keys');
 const log = require('./log');
 
 log.success('Hi.');
 
+const hidPath = '/dev/hidg0';
+
+const init = async () => {
+  const releaseSequence = keys.getReleaseSequence();
+  try {
+    await fs.promises.writeFile(hidPath, releaseSequence);
+  } catch (e) {
+    console.log(JSON.stringify(e));
+    // ESHUTDOWN: cannot send after transport endpoint shutdown, write
+    // const scriptPath = path.join(__dirname, '../camera/hid.sh');
+    // log.info('ESHUTDOWN detected, reconnecting...');
+    // const output = await exec(`sudo /usr/bin/bash ${scriptPath}`);
+    // log.info(output?.stdout?.trim());
+  }
+};
+
 const send = async (data) => {
-  const hidPath = '/dev/hidg0';
   try {
     await fs.promises.writeFile(hidPath, data);
   } catch (e) {
@@ -38,11 +57,16 @@ const writeSequence = async (keyInfo) => {
   }
 };
 
-// manual typing from stdin
-readline.emitKeypressEvents(process.stdin);
-if (process.stdin.setRawMode != null) {
-  process.stdin.setRawMode(true);
-}
-process.stdin.on('keypress', async (str, keyInfo) => {
-  await writeSequence(keyInfo);
-});
+const main = async () => {
+  await init();
+  // manual typing from stdin
+  readline.emitKeypressEvents(process.stdin);
+  if (process.stdin.setRawMode != null) {
+    process.stdin.setRawMode(true);
+  }
+  process.stdin.on('keypress', async (str, keyInfo) => {
+    await writeSequence(keyInfo);
+  });
+};
+
+main();

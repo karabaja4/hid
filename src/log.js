@@ -6,7 +6,7 @@ const info = (text) => {
 
 const success = (text) => {
   if (text) {
-    console.log('\x1b[92m%s\x1b[0m', text);
+    console.log('\x1b[32m%s\x1b[0m', text);
   }
 };
 
