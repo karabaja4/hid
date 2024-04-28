@@ -7,7 +7,7 @@ const exec = util.promisify(require('node:child_process').exec);
 const keys = require('./keys');
 const log = require('./log');
 
-log.success('Hi.');
+log.info('Hi.');
 
 const hidPath = '/dev/hidg0';
 
@@ -16,16 +16,21 @@ const init = async () => {
     const releaseSequence = keys.getReleaseSequence();
     if (releaseSequence) {
       await fs.promises.writeFile(hidPath, releaseSequence);
+    } else {
+      throw new Error('Release sequence not found.');
     }
-  } catch (e) {
-    if (e.code === 'ESHUTDOWN') {
+  } catch (err) {
+    if (err.code === 'ESHUTDOWN') {
       // ESHUTDOWN: cannot send after transport endpoint shutdown, write
       log.info('ESHUTDOWN detected, reconnecting...');
       const scriptPath = path.join(__dirname, '../config/hid.sh');
       const output = await exec(`sudo /usr/bin/bash ${scriptPath}`);
       log.info(output?.stdout?.trim());
+    } else {
+      throw err;
     }
   }
+  log.success('Initialization complete.');
 };
 
 const send = async (data) => {
@@ -44,7 +49,7 @@ const writeSequence = async (keyInfo) => {
     const alt = keyInfo.meta && (keyName !== 'escape'); // for some reason escape comes with alt pressed
     // exit on ctrl-c
     if ((keyName?.toLowerCase() === 'c') && (ctrl === true)) {
-      log.success('Bye.');
+      log.info('Bye.');
       process.exit(0);
     }
     const message = (ctrl ? 'CTRL+' : '') + (shift ? 'SHIFT+' : '') + (alt ? 'ALT+' : '') + keyName
