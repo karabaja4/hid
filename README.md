@@ -69,7 +69,7 @@ sudo umount mnt/ext4
 
 ### configure modules
 ```
-echo "dtoverlay=dwc2" | sudo tee -a /boot/config.txt
+echo "dtoverlay=dwc2" | sudo tee -a /boot/firmware/config.txt
 echo "dwc2" | sudo tee -a /etc/modules
 sudo echo "libcomposite" | sudo tee -a /etc/modules
 ```
