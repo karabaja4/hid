@@ -30,6 +30,14 @@ setup wifi
 systemctl enable ssh
 apt update
 apt upgrade
+sudo systemctl disable ModemManager
+sudo systemctl disable wpa_supplicant
+sudo systemctl disable NetworkManager
+sudo apt install dhcpcd
+sudo systemctl enable dhcpcd
+ln -s /usr/share/dhcpcd/hooks/10-wpa_supplicant /usr/lib/dhcpcd/dhcpcd-hooks/
+reboot
+
 ```
 
 ### clone
