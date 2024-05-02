@@ -24,6 +24,14 @@ sudo apt install git bc bison flex libssl-dev make libc6-dev libncurses5-dev
 sudo apt install crossbuild-essential-arm64
 ```
 
+### initial rpi setup
+```
+setup wifi
+systemctl enable ssh
+apt update
+apt upgrade
+```
+
 ### clone
 ```
 git clone --depth=1 https://github.com/raspberrypi/linux
