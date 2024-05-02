@@ -30,6 +30,7 @@ setup wifi
 systemctl enable ssh
 apt update
 apt upgrade
+reboot
 sudo systemctl disable ModemManager
 sudo systemctl disable wpa_supplicant
 sudo systemctl disable NetworkManager
