@@ -26,19 +26,23 @@ sudo apt install crossbuild-essential-arm64
 
 ### initial rpi setup
 ```
-setup wifi
-systemctl enable ssh
+sudo raspi-config -> wifi
 apt update
 apt upgrade
 reboot
-sudo systemctl disable ModemManager
+sudo apt install dhcpcd git
 sudo systemctl disable wpa_supplicant
+sudo systemctl disable dhcpcd
+sudo systemctl disable ModemManager
 sudo systemctl disable NetworkManager
-sudo apt install dhcpcd
+sudo systemctl disable avahi-daemon
+sudo systemctl disable triggerhappy
+sudo systemctl disable bluetooth
+sudo ln -s /usr/share/dhcpcd/hooks/10-wpa_supplicant /usr/lib/dhcpcd/dhcpcd-hooks/
+sudo nano /etc/wpa_supplicant/wpa_supplicant.conf
 sudo systemctl enable dhcpcd
-ln -s /usr/share/dhcpcd/hooks/10-wpa_supplicant /usr/lib/dhcpcd/dhcpcd-hooks/
+sudo systemctl enable ssh
 reboot
-
 ```
 
 ### clone
