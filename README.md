@@ -43,6 +43,10 @@ sudo nano /etc/wpa_supplicant/wpa_supplicant.conf
 sudo systemctl enable dhcpcd
 sudo systemctl enable ssh
 reboot
+sudo nano /etc/ssh/sshd_config
+mkdir .ssh
+nano .ssh/authorized_keys
+sudo systemctl restart ssh
 ```
 
 ### clone
