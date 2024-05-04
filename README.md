@@ -16,6 +16,7 @@ apt install gcc make perl
 ```
 /sbin/usermod -a -G vboxsf igor
 /sbin/usermod -a -G sudo igor
+(power settings)
 ```
 
 ### install build stuff
