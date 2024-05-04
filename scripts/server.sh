@@ -4,10 +4,10 @@ set -eu
 #!/bin/sh
 set -eu
 
-if pgrep -x 'libcamera-vid' > /dev/null
+if pgrep -x 'rpicam-vid' > /dev/null
 then
-    printf 'libcamera-vid is already running.\n'
+    printf 'rpicam-vid is already running.\n'
     exit 1
 fi
 
-( libcamera-vid -t 0 --awbgains 1.2,1.2 --width 1280 --height 720 --framerate 30 --nopreview --listen -o tcp://0.0.0.0:8494 & ) > /dev/null 2>&1
+( rpicam-vid -t 0 --awbgains 1.2,1.2 --width 1280 --height 720 --framerate 30 --nopreview --listen -o tcp://0.0.0.0:8494 & ) > /dev/null 2>&1

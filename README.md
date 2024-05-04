@@ -92,6 +92,7 @@ ln -s /root/openrc.sh /usr/bin/rcc
 ```
 cd /etc/apk/keys/
 wget https://avacyn.radiance.hr/alpine/signature/igor-66365347.rsa.pub
+cd
 apk add --repository=https://avacyn.radiance.hr/alpine/packages/libcamera/ raspberrypi-libcamera raspberrypi-libcamera-raspberrypi rpicam-apps
 ```
 
