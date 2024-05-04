@@ -84,6 +84,11 @@ sudo echo "libcomposite" | sudo tee -a /etc/modules
 (already includes "dtoverlay=dwc2")
 ```
 
+### setup libcamera on alpine
+```
+apk add --repository=https://avacyn.radiance.hr/alpine/packages/libcamera/ raspberrypi-libcamera raspberrypi-libcamera-raspberrypi rpicam-apps
+```
+
 ### setup udev
 ```
 setup-devd udev
