@@ -10,6 +10,7 @@ dd if=alpine-rpi-3.19.1-aarch64.img of=/dev/sdd bs=4M conv=fsync
 apt install linux-headers-amd64
 apt install gcc make perl
 (install guest additions)
+reboot
 ```
 
 ### setup sudo and shared folders
