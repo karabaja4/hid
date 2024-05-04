@@ -71,8 +71,8 @@ sudo umount mnt/ext4
 
 ### configure modules
 ```
-echo "dwc2" | sudo tee -a /etc/modules
-sudo echo "libcomposite" | sudo tee -a /etc/modules
+echo "dwc2" | tee -a /etc/modules
+echo "libcomposite" | tee -a /etc/modules
 ```
 
 ### configure usercfg.txt
