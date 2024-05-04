@@ -26,6 +26,7 @@ reboot
 ```
 apt install git bc bison flex libssl-dev make libc6-dev libncurses5-dev
 apt install crossbuild-essential-arm64
+reboot
 ```
 
 ### initial rpi setup
