@@ -1,6 +1,6 @@
 ### raspian image
 ```
-(download: Raspberry Pi OS Lite)
+(download: Alpine Raspberry Pi ARM64)
 7z x alpine-rpi-3.19.1-aarch64.img.gz
 dd if=alpine-rpi-3.19.1-aarch64.img of=/dev/sdd bs=4M conv=fsync
 ```
