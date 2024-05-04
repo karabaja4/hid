@@ -81,6 +81,13 @@ sudo echo "libcomposite" | sudo tee -a /etc/modules
 (already includes "dtoverlay=dwc2")
 ```
 
+### setup rcc
+```
+wget https://raw.githubusercontent.com/karabaja4/arch/master/scripts/openrc.sh
+chmod +x /root/openrc.sh
+ln -s /root/openrc.sh /usr/bin/rcc
+```
+
 ### setup libcamera on alpine
 ```
 cd /etc/apk/keys/
