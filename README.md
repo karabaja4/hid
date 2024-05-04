@@ -29,31 +29,6 @@ apt install crossbuild-essential-arm64
 reboot
 ```
 
-### initial rpi setup
-```
-sudo raspi-config -> wifi
-apt update
-apt upgrade
-reboot
-sudo apt install dhcpcd git
-sudo systemctl disable wpa_supplicant
-sudo systemctl disable dhcpcd
-sudo systemctl disable ModemManager
-sudo systemctl disable NetworkManager
-sudo systemctl disable avahi-daemon
-sudo systemctl disable triggerhappy
-sudo systemctl disable bluetooth
-sudo ln -s /usr/share/dhcpcd/hooks/10-wpa_supplicant /usr/lib/dhcpcd/dhcpcd-hooks/
-sudo nano /etc/wpa_supplicant/wpa_supplicant.conf
-sudo systemctl enable dhcpcd
-sudo systemctl enable ssh
-reboot
-sudo nano /etc/ssh/sshd_config
-mkdir .ssh
-nano .ssh/authorized_keys
-sudo systemctl restart ssh
-```
-
 ### clone
 ```
 git clone --depth=1 https://github.com/raspberrypi/linux
@@ -116,14 +91,6 @@ nano /etc/udev/rules.d/dmaheap.rules
 SUBSYSTEM=="dma_heap", GROUP="video", MODE="0660"
 ```
 
-### install nodejs
-```
-wget https://nodejs.org/dist/v20.12.2/node-v20.12.2-linux-arm64.tar.xz
-tar xvf node-v20.12.2-linux-arm64.tar.xz
-cd node-v20.12.2-linux-arm64
-sudo cp -R * /usr/local/
-```
-
 ### camera server
 ```
 libcamera-vid -t 0 --width 1280 --height 720 --framerate 30 --listen -o tcp://0.0.0.0:8494
@@ -132,11 +99,4 @@ libcamera-vid -t 0 --width 1280 --height 720 --framerate 30 --listen -o tcp://0.
 ### camera client
 ```
 ffplay tcp://192.168.0.30:8494 -fflags nobuffer -flags low_delay -framedrop
-```
-
-### setup hid service
-```
-cp hid.service /etc/systemd/system/
-systemctl enable hid
-reboot
 ```
