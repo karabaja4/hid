@@ -90,7 +90,7 @@ apk add --repository=https://avacyn.radiance.hr/alpine/packages/libcamera/ raspb
 
 ### setup udev
 ```
-adduser igor video
+addgroup igor video
 setup-devd udev
 nano /etc/udev/rules.d/dmaheap.rules
 SUBSYSTEM=="dma_heap", GROUP="video", MODE="0660"
