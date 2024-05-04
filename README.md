@@ -86,6 +86,8 @@ sudo echo "libcomposite" | sudo tee -a /etc/modules
 
 ### setup libcamera on alpine
 ```
+cd /etc/apk/keys/
+wget https://avacyn.radiance.hr/alpine/signature/igor-66365347.rsa.pub
 apk add --repository=https://avacyn.radiance.hr/alpine/packages/libcamera/ raspberrypi-libcamera raspberrypi-libcamera-raspberrypi rpicam-apps
 ```
 
