@@ -99,9 +99,21 @@ sudo umount mnt/ext4
 
 ### configure modules
 ```
-echo "dtoverlay=dwc2" | sudo tee -a /boot/firmware/config.txt
 echo "dwc2" | sudo tee -a /etc/modules
 sudo echo "libcomposite" | sudo tee -a /etc/modules
+```
+
+### configure usercfg.txt
+```
+(copy usercfg.txt to /boot/usercfg.txt)
+(already includes "dtoverlay=dwc2")
+```
+
+### setup udev
+```
+setup-devd udev
+nano /etc/udev/rules.d/dmaheap.rules
+SUBSYSTEM=="dma_heap", GROUP="video", MODE="0660"
 ```
 
 ### install nodejs
