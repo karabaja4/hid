@@ -7,6 +7,8 @@ dd if=2024-03-15-raspios-bookworm-arm64-lite.img of=/dev/sdd bs=4M conv=fsync
 
 ### debian vm vbox stuff
 ```
+apt update
+apt upgrade
 apt install linux-headers-amd64
 apt install gcc make perl
 (install guest additions)
@@ -21,8 +23,8 @@ apt install gcc make perl
 
 ### install build stuff
 ```
-sudo apt install git bc bison flex libssl-dev make libc6-dev libncurses5-dev
-sudo apt install crossbuild-essential-arm64
+apt install git bc bison flex libssl-dev make libc6-dev libncurses5-dev
+apt install crossbuild-essential-arm64
 ```
 
 ### initial rpi setup
