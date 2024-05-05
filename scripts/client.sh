@@ -5,7 +5,7 @@ _ip="192.168.0.30"
 
 ssh "${_ip}" '/home/igor/hid/scripts/server.sh'
 
-printf 'Waiting for libcamera-vid to settle...\n'
+printf 'Waiting for rpicam-vid to settle...\n'
 sleep 3
 
 printf 'Starting ffplay...\n'
