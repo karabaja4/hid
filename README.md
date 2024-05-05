@@ -1,4 +1,4 @@
-### raspian image
+### alpine image
 ```
 (download: Alpine Raspberry Pi ARM64)
 7z x alpine-rpi-3.19.1-aarch64.img.gz
