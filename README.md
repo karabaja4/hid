@@ -109,5 +109,21 @@ dd if=/dev/sdd conv=sync,noerror bs=64K | gzip -c > /path/to/backup.img.gz
 gunzip -c /path/to/backup.img.gz | dd of=/dev/sdd
 ```
 
+### setup aports
+```
+apk add alpine-sdk (+reboot)
+addgroup igor abuild (+logout)
+git clone https://gitlab.alpinelinux.org/alpine/aports.git
+copy to $HOME/.aports/: abuild.conf igor-66365347.rsa igor-66365347.rsa.pub
+copy to /etc/apk/keys/: igor-66365347.rsa.pub
+```
+
+### setup linux-rpi aport
+```
+aports/main/linux-rpi
+https://raw.githubusercontent.com/karabaja4/hid/master/config/wakeup.patch
+a6536ab83bf5efaf0ebda4bab256e9f0018e4c9287b8f482bda9d28f460858ad6e9e363f5ea2c44443b5cf2f4fa008d5a1040f69b6c910effe1c4d64167e3013
+```
+
 https://wiki.alpinelinux.org/wiki/User:Krystianch
 https://gitlab.alpinelinux.org/alpine/aports/-/merge_requests/59410
