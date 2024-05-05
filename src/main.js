@@ -22,7 +22,7 @@ const init = async () => {
   } catch (err) {
     log.info(`Error writing to ${hidPath} (${err?.code}), reconnecting...`);
     const scriptPath = path.join(__dirname, '../config/hid.sh');
-    const output = await exec(`sudo /usr/bin/bash ${scriptPath}`);
+    const output = await exec(`doas /bin/sh ${scriptPath}`);
     log.bash(output?.stdout?.trim());
   }
   log.success('Initialization complete.');
