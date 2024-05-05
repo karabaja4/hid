@@ -108,3 +108,6 @@ SUBSYSTEM=="dma_heap", GROUP="video", MODE="0660"
 dd if=/dev/sdd conv=sync,noerror bs=64K | gzip -c > /path/to/backup.img.gz
 gunzip -c /path/to/backup.img.gz | dd of=/dev/sdd
 ```
+
+https://wiki.alpinelinux.org/wiki/User:Krystianch
+https://gitlab.alpinelinux.org/alpine/aports/-/merge_requests/59410
