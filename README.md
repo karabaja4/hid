@@ -102,3 +102,9 @@ setup-devd udev
 nano /etc/udev/rules.d/dmaheap.rules
 SUBSYSTEM=="dma_heap", GROUP="video", MODE="0660"
 ```
+
+### disk image
+```
+dd if=/dev/sdd conv=sync,noerror bs=64K | gzip -c > /path/to/backup.img.gz
+gunzip -c /path/to/backup.img.gz | dd of=/dev/sdd
+```
