@@ -17,8 +17,8 @@ then
     rmdir strings/0x409
     cd ..
     rmdir logi
-    sleep 2
     echo "Gadget removed."
+    sleep 2
 fi
 
 mkdir -p logi
