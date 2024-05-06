@@ -89,6 +89,6 @@ apk upgrade
 
 ### setup local.d
 ```
-rcc enable local
 ln -s /home/igor/hid/config/hid.sh /etc/local.d/hid.start
+rcc enable local
 ```
