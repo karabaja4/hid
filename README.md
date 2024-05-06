@@ -114,7 +114,7 @@ gunzip -c /path/to/backup.img.gz | dd of=/dev/sdd
 apk add alpine-sdk (+reboot)
 addgroup igor abuild (+logout)
 git clone https://gitlab.alpinelinux.org/alpine/aports.git
-copy to $HOME/.aports/: abuild.conf igor-66365347.rsa igor-66365347.rsa.pub
+copy to $HOME/.abuild/: abuild.conf igor-66365347.rsa igor-66365347.rsa.pub
 copy to /etc/apk/keys/: igor-66365347.rsa.pub
 ```
 
