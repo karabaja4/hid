@@ -122,12 +122,21 @@ copy to $HOME/.abuild/: abuild.conf igor-66365347.rsa igor-66365347.rsa.pub
 copy to /etc/apk/keys/: igor-66365347.rsa.pub
 ```
 
+### build libcamera aport
+```
+aports/testing/libpisp/
+aports/testing/raspberrypi-libcamera/
+aports/testing/rpicam-apps/
+abuild -r
+```
+
 ### setup linux-rpi aport
 ```
 aports/main/linux-rpi
 pkgrel=30
 https://raw.githubusercontent.com/karabaja4/hid/master/config/wakeup.patch
 a6536ab83bf5efaf0ebda4bab256e9f0018e4c9287b8f482bda9d28f460858ad6e9e363f5ea2c44443b5cf2f4fa008d5a1040f69b6c910effe1c4d64167e3013
+abuild -r
 ```
 
 ### install patched kernel
