@@ -81,7 +81,9 @@ abuild -r
 
 ### install patched kernel
 ```
-apk upgrade --repository=https://avacyn.radiance.hr/alpine/packages/kernel/
+nano /etc/apk/repositories
+https://avacyn.radiance.hr/alpine/packages/kernel/
+apk upgrade
 ```
 
 ### setup local.d
