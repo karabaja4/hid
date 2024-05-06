@@ -49,6 +49,7 @@ abuild -r
 
 https://wiki.alpinelinux.org/wiki/User:Krystianch
 https://gitlab.alpinelinux.org/alpine/aports/-/merge_requests/59410
+https://gitlab.alpinelinux.org/krystianch/aports.git
 
 ### setup libcamera on alpine
 ```
