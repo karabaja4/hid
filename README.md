@@ -130,5 +130,10 @@ https://raw.githubusercontent.com/karabaja4/hid/master/config/wakeup.patch
 a6536ab83bf5efaf0ebda4bab256e9f0018e4c9287b8f482bda9d28f460858ad6e9e363f5ea2c44443b5cf2f4fa008d5a1040f69b6c910effe1c4d64167e3013
 ```
 
+### install patched kernel
+```
+apk upgrade --repository=https://avacyn.radiance.hr/alpine/packages/kernel/
+```
+
 https://wiki.alpinelinux.org/wiki/User:Krystianch
 https://gitlab.alpinelinux.org/alpine/aports/-/merge_requests/59410
