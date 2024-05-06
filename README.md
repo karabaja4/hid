@@ -85,6 +85,8 @@ abuild -r
 nano /etc/apk/repositories
 https://avacyn.radiance.hr/alpine/packages/kernel/
 apk upgrade
+nano /etc/apk/world
+linux-rpi=6.6.14-r99
 ```
 
 ### setup local.d
