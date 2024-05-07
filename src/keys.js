@@ -52,7 +52,7 @@ const map = {
   'f6': String.fromCharCode(0x3f),
   'f7': String.fromCharCode(0x40),
   'f8': String.fromCharCode(0x41),
-  'f9': String.fromCharCode(0x42),
+  'f9': String.fromCharCode(0x29), // replace 0x42 to use f9 as escape (0x29)
   'f10': String.fromCharCode(0x43),
   'f11': String.fromCharCode(0x44),
   'f12': String.fromCharCode(0x45),
