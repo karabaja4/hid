@@ -1,38 +1,51 @@
 const fs = require('node:fs');
 const readline = require('node:readline');
 const path = require('node:path');
-const util = require('node:util');
-const exec = util.promisify(require('node:child_process').exec);
+const cp = require('child_process');
 
 const keys = require('./keys');
 const log = require('./log');
 
-log.info('Hi.');
-
 const hidPath = '/dev/hidg0';
+
+const spawnProcess = async (command, args) => {
+  log.info(`Spawning: '${command} ${args.join(' ')}'`);
+  const options = { stdio: ['ignore', 'inherit', 'inherit'] };
+  const spawned = cp.spawn(command, args, options);
+  const exitCode = await new Promise((resolve) => {
+    spawned.on('close', resolve);
+  });
+  return exitCode;
+};
 
 const init = async () => {
   try {
-    await writeSequence({ name: 'backspace' });
+    await writeSequence('backspace');
   } catch (err) {
     log.info(err?.message);
-    log.info(`Error writing to ${hidPath} (${err?.code}), reconnecting...`);
     const scriptPath = path.join(__dirname, '../config/hid.sh');
-    const output = await exec(`doas /bin/sh ${scriptPath}`);
-    log.bash(output?.stdout?.trim());
+    const exitCode = await spawnProcess('doas', ['/bin/sh', scriptPath]);
+    if (exitCode) {
+      throw new Error(`Failed with ${exitCode}`);
+    } else {
+      log.success(`Spawn exited with ${exitCode}`);
+    }
   }
   log.success('Initialization complete.');
 };
 
-const send = async (data) => {
-  try {
-    await fs.promises.writeFile(hidPath, data);
-  } catch (e) {
-    log.error(`Error writing to ${hidPath}: ${e.message}`);
+const writeSequence = async (keyName, ctrl, shift, alt) => {
+  const keySequence = keys.getKeySequence(keyName, ctrl, shift, alt);
+  const releaseSequence = keys.getReleaseSequence();
+  if (keySequence && releaseSequence) {
+    await fs.promises.writeFile(hidPath, keySequence);
+    await fs.promises.writeFile(hidPath, releaseSequence);
+  } else {
+    throw new Error(`No sequence mapping for: ${keyName}`)
   }
 };
 
-const writeSequence = async (keyInfo) => {
+const doKeypress = async (keyInfo) => {
   if (keyInfo) {
     const keyName = keyInfo.name || keyInfo.sequence;
     const ctrl = keyInfo.ctrl;
@@ -45,18 +58,16 @@ const writeSequence = async (keyInfo) => {
     }
     const message = (ctrl ? 'CTRL+' : '') + (shift ? 'SHIFT+' : '') + (alt ? 'ALT+' : '') + keyName
     log.info(`Key pressed: '${message}'`);
-    const keySequence = keys.getKeySequence(keyName, ctrl, shift, alt);
-    const releaseSequence = keys.getReleaseSequence();
-    if (keySequence && releaseSequence) {
-      await send(keySequence);
-      await send(releaseSequence);
-    } else {
-      log.error(`No sequence mapping for: ${keyName}`);
+    try {
+      await writeSequence(keyName, ctrl, shift, alt);
+    } catch (err) {
+      log.error(err?.message);
     }
   }
 };
 
 const main = async () => {
+  log.info('Hi.');
   await init();
   // manual typing from stdin
   readline.emitKeypressEvents(process.stdin);
@@ -64,7 +75,7 @@ const main = async () => {
     process.stdin.setRawMode(true);
   }
   process.stdin.on('keypress', async (str, keyInfo) => {
-    await writeSequence(keyInfo);
+    await doKeypress(keyInfo);
   });
 };
 
