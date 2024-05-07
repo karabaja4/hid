@@ -38,13 +38,13 @@ const writeSequence = async (keyInfo) => {
     const ctrl = keyInfo.ctrl;
     const shift =  keyInfo.shift;
     const alt = keyInfo.meta && (keyName !== 'escape'); // for some reason escape comes with alt pressed
+    const message = (ctrl ? 'CTRL+' : '') + (shift ? 'SHIFT+' : '') + (alt ? 'ALT+' : '') + keyName
+    log.info(`Key pressed: '${message}'`);
     // exit on ctrl-c
     if ((keyName?.toLowerCase() === 'c') && (ctrl === true)) {
       log.info('Bye.');
       process.exit(0);
     }
-    const message = (ctrl ? 'CTRL+' : '') + (shift ? 'SHIFT+' : '') + (alt ? 'ALT+' : '') + keyName
-    log.info(`Key pressed: '${message}'`);
     const keySequence = keys.getKeySequence(keyName, ctrl, shift, alt);
     const releaseSequence = keys.getReleaseSequence();
     if (keySequence && releaseSequence) {
