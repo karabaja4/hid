@@ -13,12 +13,7 @@ const hidPath = '/dev/hidg0';
 
 const init = async () => {
   try {
-    const releaseSequence = keys.getReleaseSequence();
-    if (releaseSequence) {
-      await fs.promises.writeFile(hidPath, releaseSequence);
-    } else {
-      throw new Error('Release sequence not found.');
-    }
+    await writeSequence({ name: 'backspace' });
   } catch (err) {
     log.info(err?.message);
     log.info(`Error writing to ${hidPath} (${err?.code}), reconnecting...`);
