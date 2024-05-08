@@ -1,12 +1,16 @@
 #!/bin/sh
 set -eu
 
+_log() {
+    printf '[%s] %s\n' "$(date -Is)" "${1}" | tee -a /var/log/hid.log
+}
+
 cd /sys/kernel/config/usb_gadget/ || exit 1
 
 # https://www.kernel.org/doc/Documentation/usb/gadget_configfs.txt
 if [ -d "logi" ]
 then
-    echo "Gadget exists, removing..."
+    _log "Gadget exists, removing..."
     cd logi || exit 1
     echo "" > UDC
     sleep 2
@@ -17,7 +21,7 @@ then
     rmdir strings/0x409
     cd ..
     rmdir logi
-    echo "Gadget removed."
+    _log "Gadget removed."
     sleep 2
 fi
 
@@ -50,4 +54,4 @@ ln -s functions/hid.usb0 configs/c.1/
 ls /sys/class/udc > UDC
 
 chmod 666 /dev/hidg0
-echo "Gadget added."
+_log "Gadget added."
