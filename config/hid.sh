@@ -2,8 +2,9 @@
 set -eu
 
 _log() {
-    printf '[\033[35m%s\033[0m] %s\n' "$(basename "${0}")" "${1}"
-    printf '[%s] %s\n' "$(date -Is)" "${1}" >> /var/log/hid.log
+    _fn="$(basename "${0}")"
+    printf '[\033[35m%s\033[0m] %s\n' "${_fn}" "${1}"
+    printf '[%s][%s] %s\n' "${_fn}" "$(date -Is)" "${1}" >> /var/log/hid.log
 }
 
 cd /sys/kernel/config/usb_gadget/ || exit 1
