@@ -1,10 +1,10 @@
 #!/bin/sh
 set -eu
+_fn="$(basename "${0}")"
 
 _name='rpicam-vid'
 
 _log() {
-    _fn="$(basename "${0}")"
     printf '[\033[35m%s\033[0m] %s\n' "${_fn}" "${1}"
 }
 

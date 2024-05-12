@@ -1,8 +1,8 @@
 #!/bin/sh
 set -eu
+_fn="$(basename "${0}")"
 
 _log() {
-    _fn="$(basename "${0}")"
     printf '[\033[35m%s\033[0m] %s\n' "${_fn}" "${1}"
     printf '[%s][%s] %s\n' "${_fn}" "$(date -Is)" "${1}" >> /var/log/hid.log
 }
