@@ -17,6 +17,8 @@ then
         _log "Waiting for ${_name} to exit..."
         sleep 1
     done
+    _log "${_name} has been killed."
 fi
 
+_log "Starting ${_name}..."
 ( rpicam-vid -t 0 --awbgains 1.2,1.2 --width 1280 --height 720 --framerate 30 --nopreview --listen -o tcp://0.0.0.0:8494 & ) > /dev/null 2>&1
