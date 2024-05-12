@@ -16,7 +16,7 @@ ssh -l "${_user}" -p "${_port}" "${_ip}" '/home/igor/hid/scripts/server.sh'
 _log 'Waiting for rpicam-vid to settle...'
 sleep 3
 
-_log "Connecting to rpicam-vid at ${_server}..."
+_log "Connecting ffplay to ${_server}..."
 ( ffplay -loglevel fatal -strict experimental -vf setpts=0 -fflags nobuffer -flags low_delay -framedrop -i "${_server}" & ) > /dev/null 2>&1
 
 _log 'Starting keyboard...'
