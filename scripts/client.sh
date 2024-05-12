@@ -22,3 +22,5 @@ _log "Connecting ffplay to ${_server}..."
 
 _log 'Starting keyboard...'
 ssh -l "${_user}" -p "${_port}" "${_ip}" -t 'node /home/igor/hid/src/main.js'
+
+_log 'Exited.'
