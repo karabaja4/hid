@@ -96,3 +96,8 @@ linux-rpi=6.6.14-r99
 ln -s /home/igor/hid/config/hid.sh /etc/local.d/hid.start
 rcc enable local
 ```
+
+### setup doas
+```
+copy hid.conf to /etc/doas.d/hid.conf
+```
