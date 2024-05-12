@@ -8,7 +8,7 @@ _user="igor"
 _server="tcp://${_ip}:8494"
 
 _log() {
-    printf '[\033[35m%s\033[0m] %s\n' "${_fn}" "${1}"
+    printf '[\033[36m%s\033[0m] %s\n' "${_fn}" "${1}"
 }
 
 _log 'Starting server...'
