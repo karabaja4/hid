@@ -11,6 +11,7 @@ _log() {
     printf '[\033[35m%s\033[0m] %s\n' "${_fn}" "${1}"
 }
 
+_log 'Starting server...'
 ssh -l "${_user}" -p "${_port}" "${_ip}" '/home/igor/hid/scripts/server.sh'
 
 _log 'Waiting for rpicam-vid to settle...'
