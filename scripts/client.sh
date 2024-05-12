@@ -5,13 +5,18 @@ _ip="192.168.0.30"
 _port="28801"
 _user="igor"
 
+_log() {
+    _fn="$(basename "${0}")"
+    printf '[\033[35m%s\033[0m] %s\n' "${_fn}" "${1}"
+}
+
 ssh -l "${_user}" -p "${_port}" "${_ip}" '/home/igor/hid/scripts/server.sh'
 
-printf 'Waiting for rpicam-vid to settle...\n'
+_log 'Waiting for rpicam-vid to settle...'
 sleep 3
 
-printf 'Starting ffplay...\n'
+_log 'Starting ffplay server...'
 ( ffplay -loglevel fatal -strict experimental -vf setpts=0 -fflags nobuffer -flags low_delay -framedrop -i "tcp://${_ip}:8494" & ) > /dev/null 2>&1
 
-printf 'Starting keyboard...\n'
+_log 'Starting keyboard...'
 ssh -l "${_user}" -p "${_port}" "${_ip}" -t 'node /home/igor/hid/src/main.js'
