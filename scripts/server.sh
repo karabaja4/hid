@@ -12,6 +12,7 @@ if pgrep -x "${_name}" > /dev/null
 then
     _log "${_name} is already running, killing..." 
     killall -TERM "${_name}"
+    sleep 1
     while pgrep -x "${_name}" > /dev/null
     do
         _log "Waiting for ${_name} to exit..."
