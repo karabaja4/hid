@@ -59,6 +59,7 @@ cd /etc/apk/keys/
 wget https://avacyn.radiance.hr/alpine/signature/igor-66365347.rsa.pub
 cd
 nano /etc/apk/repositories (enable community)
+apk update
 apk add --repository=https://avacyn.radiance.hr/alpine/packages/libcamera/ raspberrypi-libcamera raspberrypi-libcamera-raspberrypi rpicam-apps
 ```
 
@@ -87,9 +88,10 @@ abuild -r
 ```
 nano /etc/apk/repositories
 https://avacyn.radiance.hr/alpine/packages/kernel2/
+apk update
 apk upgrade
 nano /etc/apk/world
-linux-rpi=6.6.14-r99
+linux-rpi=6.6.31-r99
 ```
 
 ### setup local.d
