@@ -14,8 +14,9 @@ dd if=/dev/zero of=/dev/sdd bs=1M
 
 ### configure modules
 ```
-echo "dwc2" | tee -a /etc/modules
-echo "libcomposite" | tee -a /etc/modules
+/etc/modules
+dwc2
+libcomposite
 ```
 
 ### configure usercfg.txt
@@ -85,7 +86,7 @@ abuild -r
 ### install patched kernel
 ```
 nano /etc/apk/repositories
-https://avacyn.radiance.hr/alpine/packages/kernel/
+https://avacyn.radiance.hr/alpine/packages/kernel2/
 apk upgrade
 nano /etc/apk/world
 linux-rpi=6.6.14-r99
