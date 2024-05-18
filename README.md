@@ -14,7 +14,7 @@ dd if=/dev/zero of=/dev/sdd bs=1M
 
 ### configure modules
 ```
-/etc/modules
+nano /etc/modules
 dwc2
 libcomposite
 ```
