@@ -25,7 +25,7 @@ libcomposite
 (already includes "dtoverlay=dwc2")
 ```
 
-### configure gpu_mem
+### configure gpu_mem (only if no camera, camera needs 64M)
 ```
 apk add raspberrypi-bootloader-cutdown
 nano /boot/config.txt
@@ -115,6 +115,8 @@ copy hid.conf to /etc/doas.d/hid.conf
 
 ### modules blacklist
 ```
+nano /etc/modprobe.d/igor.conf
+
 # needed for integrated wifi
 blacklist brcmfmac
 blacklist brcmutil
