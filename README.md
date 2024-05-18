@@ -25,6 +25,14 @@ libcomposite
 (already includes "dtoverlay=dwc2")
 ```
 
+### configure gpu_mem
+```
+apk add raspberrypi-bootloader-cutdown
+nano /boot/config.txt
+gpu_mem=16
+(only works from config.txt)
+```
+
 ### setup rcc
 ```
 wget https://raw.githubusercontent.com/karabaja4/arch/master/scripts/openrc.sh
