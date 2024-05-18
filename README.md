@@ -35,6 +35,7 @@ gpu_mem=16
 
 ### setup rcc
 ```
+cd
 wget https://raw.githubusercontent.com/karabaja4/arch/master/scripts/openrc.sh
 chmod +x /root/openrc.sh
 ln -s /root/openrc.sh /usr/bin/rcc
