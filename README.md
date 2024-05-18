@@ -112,3 +112,11 @@ rcc enable local
 ```
 copy hid.conf to /etc/doas.d/hid.conf
 ```
+
+### modules blacklist
+```
+blacklist brcmfmac
+blacklist brcmutil
+blacklist btbcm
+blacklist hci_uart
+```
