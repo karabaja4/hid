@@ -12,6 +12,12 @@ gunzip -c /path/to/backup.img.gz | dd of=/dev/sdd
 dd if=/dev/zero of=/dev/sdd bs=1M
 ```
 
+### clock
+```
+rc-update add swclock boot
+rc-update del hwclock boot
+```
+
 ### configure modules
 ```
 /etc/modules
