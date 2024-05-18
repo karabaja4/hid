@@ -119,7 +119,7 @@ copy hid.conf to /etc/doas.d/hid.conf
 blacklist brcmfmac
 blacklist brcmutil
 
-# needed for bt and camera
+# needed for bt
 blacklist btbcm
 blacklist hci_uart
 ```
