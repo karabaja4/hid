@@ -16,6 +16,7 @@ then
     cd logi || exit 1
     echo "" > UDC
     sleep 2
+    rm configs/c.1/hid.usb0
     rmdir configs/c.1/strings/0x409
     rmdir configs/c.1
     rmdir functions/hid.usb0
