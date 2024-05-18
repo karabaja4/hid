@@ -115,8 +115,11 @@ copy hid.conf to /etc/doas.d/hid.conf
 
 ### modules blacklist
 ```
+# needed for integrated wifi
 blacklist brcmfmac
 blacklist brcmutil
+
+# needed for bt and camera
 blacklist btbcm
 blacklist hci_uart
 ```
