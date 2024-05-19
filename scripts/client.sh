@@ -2,10 +2,10 @@
 set -eu
 _fn="$(basename "${0}")"
 
-_ip="192.168.0.30"
+_ip="my.tunnel.address"
 _port="28801"
 _user="igor"
-_server="tcp://${_ip}:8494"
+_server="tcp://localhost:8494"
 
 _log() {
     printf '[\033[36m%s\033[0m] %s\n' "${_fn}" "${1}"
