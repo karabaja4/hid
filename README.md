@@ -2,14 +2,14 @@
 ```
 (download: Alpine Raspberry Pi ARM64)
 7z x alpine-rpi-3.19.1-aarch64.img.gz
-dd if=alpine-rpi-3.19.1-aarch64.img of=/dev/sdd bs=4M conv=fsync
+dd if=alpine-rpi-3.19.1-aarch64.img of=/dev/sdc bs=4M conv=fsync
 ```
 
 ### disk image
 ```
-dd if=/dev/sdd conv=sync,noerror bs=64K | gzip -c > /path/to/backup.img.gz
-gunzip -c /path/to/backup.img.gz | dd of=/dev/sdd
-dd if=/dev/zero of=/dev/sdd bs=1M
+dd if=/dev/sdc conv=sync,noerror bs=64K | gzip -c > /path/to/backup.img.gz
+gunzip -c /path/to/backup.img.gz | dd of=/dev/sdc
+dd if=/dev/zero of=/dev/sdc bs=1M
 ```
 
 ### configure modules
