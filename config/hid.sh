@@ -54,6 +54,8 @@ if [ -f "functions/hid.usb0/wakeup_on_write" ]
 then
     echo 1 > functions/hid.usb0/wakeup_on_write
     _log "Enabled wakeup_on_write."
+else
+    _log "Warning: wakeup_on_write is not supported."
 fi
 
 echo 8 > functions/hid.usb0/report_length
