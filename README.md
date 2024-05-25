@@ -127,12 +127,3 @@ blacklist btbcm
 blacklist hci_uart
 ```
 
-### resolve.conf
-```
-nano /etc/udhcpc/udhcpc.conf
-RESOLV_CONF="no"
-
-nano /etc/resolv.conf
-nameserver 1.1.1.1
-nameserver 1.0.0.1
-```
