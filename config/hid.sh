@@ -27,6 +27,8 @@ then
     sleep 2
 fi
 
+_log "Adding gadget..."
+
 mkdir -p logi
 cd logi || exit 1
 
