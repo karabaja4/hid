@@ -116,11 +116,11 @@ const map = {
 
 // map function keys to specific key combinations
 const getSpecial = (keyName, ctrl) => {
-  // ctrl+escape with F9 to open start menu
+  // ctrl+f9 as ctrl+escape to open start menu
   if (ctrl && (keyName === 'f9')) {
     return String.fromCharCode(0x01) + NULLCHAR + map['escape'] + NULLCHAR.repeat(5); // 0x01 = LCTRL
   }
-  // win+b focuses system tray
+  // ctrl+f10 as meta+b to focus system tray
   if (ctrl && (keyName === 'f10')) {
     return String.fromCharCode(0x08) + NULLCHAR + map['b'] + NULLCHAR.repeat(5); // 0x08 = LMETA
   }
