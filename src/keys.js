@@ -124,6 +124,7 @@ const getSpecial = (keyName, ctrl) => {
   if (ctrl && (keyName === 'f10')) {
     return String.fromCharCode(0x08) + NULLCHAR + map['b'] + NULLCHAR.repeat(5); // 0x08 = LMETA
   }
+  return null;
 };
 
 const getKeySequence = (keyName, ctrl, shift, alt) => {
