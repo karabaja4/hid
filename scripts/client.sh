@@ -3,8 +3,8 @@ set -eu
 _fn="$(basename "${0}")"
 
 _ip="my.tunnel.address"
-_port="28801"
-_user="igor"
+_port="12345"
+_user="user"
 _server="tcp://localhost:58494"
 
 _log() {
