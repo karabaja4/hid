@@ -112,6 +112,7 @@ rcc enable local
 ### setup doas
 ```
 copy hid.conf to /etc/doas.d/hid.conf
+chown root:root hid.sh
 ```
 
 ### modules blacklist
