@@ -22,4 +22,4 @@ then
 fi
 
 _log "Starting ${_name}..."
-( rpicam-vid -t 0 --awbgains 1.2,1.2 --width 1280 --height 720 --framerate 30 --nopreview --listen -o tcp://0.0.0.0:8494 & ) > /dev/null 2>&1
+( rpicam-vid -t 0 --awbgains 1.2,1.2 --width 1152 --height 648 --framerate 20 --nopreview --listen -o tcp://0.0.0.0:8494 & ) > /dev/null 2>&1
