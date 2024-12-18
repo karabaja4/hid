@@ -2,7 +2,7 @@
 set -eu
 _fn="$(basename "${0}")"
 
-_name='rpicam-vid'
+_name='ffmpeg'
 
 _log() {
     printf '[\033[35m%s\033[0m] %s\n' "${_fn}" "${1}"
@@ -22,4 +22,4 @@ then
 fi
 
 _log "Starting ${_name}..."
-( rpicam-vid -t 0 --awbgains 1.2,1.2 --width 1152 --height 648 --framerate 20 --nopreview --listen -o tcp://0.0.0.0:8494 & ) > /dev/null 2>&1
+( ffmpeg -f v4l2 -i /dev/video0 -input_format mjpeg -video_size 1280x720 -preset ultrafast -vcodec libx264 -tune zerolatency -f mpegts tcp://0.0.0.0:8494?listen & ) > /dev/null 2>&1
