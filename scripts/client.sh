@@ -4,8 +4,8 @@ _fn="$(basename "${0}")"
 _parent_dir="$(dirname "$(dirname "$(readlink -f "${0}")")")"
 
 _user="igor"
-_ip="<server>"
-_port="<port>"
+_ip="localhost"
+_port="58801"
 _info="${_user}@${_ip}:${_port}"
 
 _log() {
