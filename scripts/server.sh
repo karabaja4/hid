@@ -22,4 +22,4 @@ then
 fi
 
 _log "Starting ${_name}..."
-( ffmpeg -f v4l2 -input_format mjpeg -video_size 1280x720 -i /dev/video0 -preset ultrafast -vcodec libx264 -tune zerolatency -f matroska tcp://0.0.0.0:8494?listen & ) > /dev/null 2>&1
+( ffmpeg -f v4l2 -input_format mjpeg -video_size 1280x720 -i /dev/video0 -preset ultrafast -vcodec libx264 -tune zerolatency -f mpegts tcp://0.0.0.0:8494?listen & ) > /dev/null 2>&1
