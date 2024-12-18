@@ -1,0 +1,10 @@
+#!/sbin/openrc-run
+
+user="igor"
+group="igor"
+command="/usr/bin/node"
+command_args="/home/igor/hid/src/server.js"
+command_user="${user}:${group}"
+command_background="yes"
+pidfile="/run/${RC_SVCNAME}.pid"
+output_log="/var/log/${RC_SVCNAME}.log"
