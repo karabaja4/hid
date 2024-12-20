@@ -6,6 +6,7 @@ _name='ffmpeg'
 _camera='/dev/video0'
 _resolution='1280x720'
 _port='8494'
+_address="tcp://0.0.0.0:${_port}"
 
 _log() {
     printf '[\033[35m%s\033[0m] %s\n' "${_fn}" "${1}"
@@ -25,7 +26,7 @@ then
 fi
 
 _log "Starting ${_name} on ${_port}..."
-( ffmpeg -f v4l2 -input_format mjpeg -video_size ${_resolution} -i ${_camera} -preset ultrafast -vcodec libx264 -tune zerolatency -f mpegts tcp://0.0.0.0:${_port}?listen & ) > /dev/null 2>&1
+( ffmpeg -f v4l2 -input_format mjpeg -video_size ${_resolution} -i ${_camera} -preset ultrafast -vcodec libx264 -tune zerolatency -f mpegts ${_address}?listen & ) > /dev/null 2>&1
 
 _log "Waiting for ${_name} to settle"
 sleep 3
