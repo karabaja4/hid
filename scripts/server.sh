@@ -3,6 +3,9 @@ set -eu
 _fn="$(basename "${0}")"
 
 _name='ffmpeg'
+_camera='/dev/video0'
+_resolution='1280x720'
+_port='8494'
 
 _log() {
     printf '[\033[35m%s\033[0m] %s\n' "${_fn}" "${1}"
@@ -21,12 +24,12 @@ then
     _log "${_name} has been killed."
 fi
 
-_log "Starting ${_name}..."
-( ffmpeg -f v4l2 -input_format mjpeg -video_size 1280x720 -i /dev/video0 -preset ultrafast -vcodec libx264 -tune zerolatency -f mpegts tcp://0.0.0.0:8494?listen & ) > /dev/null 2>&1
+_log "Starting ${_name} on ${_port}..."
+( ffmpeg -f v4l2 -input_format mjpeg -video_size ${_resolution} -i ${_camera} -preset ultrafast -vcodec libx264 -tune zerolatency -f mpegts tcp://0.0.0.0:${_port}?listen & ) > /dev/null 2>&1
 
 _log "Waiting for ${_name} to settle"
 sleep 3
 
 _log "Focusing camera"
-v4l2-ctl --device /dev/video0 --set-ctrl=focus_automatic_continuous=0
-v4l2-ctl --device /dev/video0 --set-ctrl=focus_absolute=95
+v4l2-ctl --device ${_camera} --set-ctrl=focus_automatic_continuous=0
+v4l2-ctl --device ${_camera} --set-ctrl=focus_absolute=95
