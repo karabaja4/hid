@@ -15,12 +15,6 @@ _log() {
 _log "Starting ffmpeg server on ${_info}"
 ssh -l "${_user}" -p "${_port}" "${_ip}" '/home/igor/hid/scripts/server.sh'
 
-_log "Waiting for ffmpeg to settle on ${_info}"
-sleep 3
-
-_log "Focusing camera"
-ssh -l "${_user}" -p "${_port}" "${_ip}" '/home/igor/hid/scripts/focus.sh'
-
 _server="tcp://localhost:58494"
 _log "Connecting ffplay to ${_server}"
 ( ffplay -loglevel fatal -strict experimental -vf setpts=0 -fflags nobuffer -flags low_delay -framedrop -i "${_server}" & ) > /dev/null 2>&1
