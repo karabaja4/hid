@@ -66,5 +66,8 @@ ln -s functions/hid.usb0 configs/c.1/
 
 ls /sys/class/udc > UDC
 
+_log "Waiting for hid to settle..."
+sleep 3
+
 chmod 666 /dev/hidg0
 _log "Gadget added."
