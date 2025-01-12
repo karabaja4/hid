@@ -74,7 +74,14 @@ stat -c %a /dev/hidg0
 chmod 666 /dev/hidg0
 
 stat -c %a /dev/hidg0
-sleep 1
+stat -c %a /dev/hidg0
+stat -c %a /dev/hidg0
+stat -c %a /dev/hidg0
+stat -c %a /dev/hidg0
+stat -c %a /dev/hidg0
+stat -c %a /dev/hidg0
+stat -c %a /dev/hidg0
+stat -c %a /dev/hidg0
 stat -c %a /dev/hidg0
 
 _log "Gadget added."
