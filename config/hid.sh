@@ -69,6 +69,8 @@ ls /sys/class/udc > UDC
 #_log "Waiting for hid to settle..."
 #sleep 3
 
+stat -c %a /dev/hidg0
+
 chmod 666 /dev/hidg0
 
 stat -c %a /dev/hidg0
