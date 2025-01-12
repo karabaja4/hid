@@ -29,7 +29,7 @@ _log "Starting ${_name} on ${_address}..."
 ( ffmpeg -f v4l2 -input_format mjpeg -video_size "${_resolution}" -i "${_camera}" -preset ultrafast -vcodec libx264 -tune zerolatency -f mpegts "${_address}?listen" & ) > /dev/null 2>&1
 
 _log "Waiting for ${_name} to settle"
-sleep 10
+sleep 5
 
 _log "Focusing camera"
 v4l2-ctl --device "${_camera}" --set-ctrl=focus_automatic_continuous=0
