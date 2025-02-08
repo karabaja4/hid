@@ -14,7 +14,7 @@ _log() {
 
 if pgrep -x "${_name}" > /dev/null
 then
-    _log "${_name} is already running, killing..." 
+    _log "${_name} is already running, killing..."
     killall -TERM "${_name}"
     sleep 1
     while pgrep -x "${_name}" > /dev/null
@@ -33,4 +33,4 @@ sleep 5
 
 _log "Focusing camera"
 v4l2-ctl --device "${_camera}" --set-ctrl=focus_automatic_continuous=0
-v4l2-ctl --device "${_camera}" --set-ctrl=focus_absolute=95
+v4l2-ctl --device "${_camera}" --set-ctrl=focus_absolute=90
