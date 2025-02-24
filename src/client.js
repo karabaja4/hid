@@ -16,6 +16,19 @@ const sendSequence = async (keyName, ctrl, shift, alt) => {
 
 const doKeypress = async (keyInfo) => {
   if (keyInfo) {
+    // on bash for windows
+    // ctrl+f9 comes with keyInfo.name undefined and sequence \x1b[20^
+    // ctrl+f10 comes with keyInfo.name undefined and sequence \x1b[21^
+    if (keyInfo.name === 'undefined') {
+      if (keyInfo.sequence === '\x1b[20^') {
+        keyInfo.name = 'f9';
+        keyInfo.ctrl = true;
+      }
+      if (keyInfo.sequence === '\x1b[21^') {
+        keyInfo.name = 'f10';
+        keyInfo.ctrl = true;
+      }
+    }
     const keyName = keyInfo.name || keyInfo.sequence;
     const ctrl = keyInfo.ctrl;
     const shift =  keyInfo.shift;
