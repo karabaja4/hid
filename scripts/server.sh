@@ -33,6 +33,6 @@ sleep 5
 
 _log "Focusing camera"
 v4l2-ctl --device "${_camera}" --set-ctrl=auto_exposure=1
-v4l2-ctl --device "${_camera}" --set-ctrl=exposure_time_absolute=125
+v4l2-ctl --device "${_camera}" --set-ctrl=exposure_time_absolute=250
 v4l2-ctl --device "${_camera}" --set-ctrl=focus_automatic_continuous=0
 v4l2-ctl --device "${_camera}" --set-ctrl=focus_absolute=90
