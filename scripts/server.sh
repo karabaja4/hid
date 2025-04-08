@@ -32,5 +32,6 @@ _log "Waiting for ${_name} to settle"
 sleep 5
 
 _log "Focusing camera"
+v4l2-ctl --device "${_camera}" --set-ctrl=auto_exposure=0
 v4l2-ctl --device "${_camera}" --set-ctrl=focus_automatic_continuous=0
 v4l2-ctl --device "${_camera}" --set-ctrl=focus_absolute=90
