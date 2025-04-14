@@ -14,13 +14,22 @@ _log() {
 
 if pgrep -x "${_name}" > /dev/null
 then
+    _i=0
+    _killed=0
     _log "${_name} is already running, killing..."
     killall -TERM "${_name}"
     sleep 1
     while pgrep -x "${_name}" > /dev/null
     do
+        if [ "${_i}" -ge 10 ] && [ "${_killed}" -eq 0 ]
+        then
+            _log "${_name} did not exit after 10 seconds, forcing kill..."
+            killall -KILL "${_name}"
+            _killed=1
+        fi
         _log "Waiting for ${_name} to exit..."
         sleep 1
+        _i=$((_i + 1))
     done
     _log "${_name} has been killed."
 fi
