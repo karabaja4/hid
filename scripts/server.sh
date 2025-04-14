@@ -36,7 +36,7 @@ then
 fi
 
 _log "Starting ${_name} on ${_address}..."
-( ffmpeg -f v4l2 -input_format mjpeg -video_size "${_resolution}" -i "${_camera}" -preset ultrafast -vcodec libx264 -tune zerolatency -b:v 2M -maxrate 2.5M -bufsize 1M -f mpegts "${_address}?listen" & ) > /dev/null 2>&1
+( ffmpeg -f v4l2 -input_format mjpeg -video_size "${_resolution}" -i "${_camera}" -preset ultrafast -vcodec libx264 -tune zerolatency -b:v 500k -maxrate 500k -bufsize 1M -f mpegts "${_address}?listen" & ) > /dev/null 2>&1
 
 _log "Waiting for ${_name} to settle"
 sleep 5
